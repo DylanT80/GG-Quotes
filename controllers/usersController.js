@@ -11,9 +11,9 @@ const loginUser = async (req, res, next) => {
     // Missing credentials
     if (!(username && password)) {
         res.status(400);
-        next(new Error('Missing credentials'));
+        return next(new Error('Missing credentials'));
     }
-    
+
     // Compare username and password
     const user = await userModel.findOne({'username' : username});
     if (user && await bcrypt.compare(password, user.password)) {
