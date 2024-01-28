@@ -1,11 +1,13 @@
+require('dotenv').config();
 const express = require('express');
+const connectDB = require('./config/dbConnection');
+
 const app = express();
-const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello Beitch');
-})
+app.use('/api/quotes', require('./routers/quotesRouter'));
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-})
+connectDB().then(() => {
+    app.listen(process.env.PORT_NUM, () => {
+        console.log(`Listening on ${process.env.PORT_NUM}`);
+    });
+});
