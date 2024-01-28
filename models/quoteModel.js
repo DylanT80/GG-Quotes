@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const quoteSchema = mongoose.Schema(
+const quoteSchema = new mongoose.Schema(
     {
         author: {
             type: String,
@@ -10,6 +10,10 @@ const quoteSchema = mongoose.Schema(
         quote: {
             type: String,
             required: [true, "Please provide the quote"]
+        },
+        accessToken: {
+            type: String,
+            default: null
         }
     },
     { timestamps: true }
