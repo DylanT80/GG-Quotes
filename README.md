@@ -15,6 +15,7 @@ To start running server (dev then prod respectively):
 npm --prefix ./back-end run server
 npm --prefix ./back-end run start
 ```
+Tech Stack:
 
 - Node.js
 - Express
