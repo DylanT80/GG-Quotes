@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const daredevilSchema = new mongoose.Schema(
     {
+        id: {
+            type: Number,
+            required: [true, "Provide surrogate primary key"]
+        },
         firstName: {
             type: String,
             required: [true, "Provide first name"]

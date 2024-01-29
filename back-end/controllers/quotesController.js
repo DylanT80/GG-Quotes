@@ -1,5 +1,7 @@
 const quoteModel = require('../models/quoteModel');
 
+// TODO: Add endpoint to return all quotes (pagination)
+
 // @desc Get a random GG quote
 // @route GET /api/quotes
 // @public

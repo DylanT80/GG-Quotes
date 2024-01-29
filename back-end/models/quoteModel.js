@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const quoteSchema = new mongoose.Schema(
     {
+        id: {
+            type: Number,
+            required: [true, "Provide surrogate primary key"]
+        },
         quote: {
             type: String,
             required: [true, "Please provide the quote"]
