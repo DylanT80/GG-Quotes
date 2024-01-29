@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get('/', getRandomQuote);
 router.post('/create', verifyToken, addQuote);
-router.delete('/delete', verifyToken, deleteQuote);
+router.delete('/delete?', verifyToken, deleteQuote);
 
 module.exports = router;

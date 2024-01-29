@@ -1,5 +1,6 @@
 const quoteModel = require('../models/quoteModel');
 
+// TODO: Update endpoints to reflext new Model changes
 // TODO: Add endpoint to return all quotes (pagination)
 
 // @desc Get a random GG quote
@@ -15,14 +16,15 @@ const getRandomQuote = async (req, res, next) => {
 // @private
 const addQuote = async (req, res, next) => {
     const { author, quote } = req.body;
-    
     try {
         if (!(author && quote)) {
             throw new Error("Quote fields missing");
         } else if (await quoteModel.findOne({author, quote})) {
             throw new Error("Quote from author already in DB!");
         }
-        const quoteDoc = await quoteModel.create({author, quote});
+        // Updated id
+        const total = await quoteModel.countDocuments();
+        const quoteDoc = await quoteModel.create({id: total + 1, author, quote});
         res.status(201).json(quoteDoc);
     } catch (error) {
         res.status(400);
@@ -31,15 +33,15 @@ const addQuote = async (req, res, next) => {
 }
 
 // @desc Delete a quote in database
-// @route DELETE /api/quotes/delete
+// @route DELETE /api/quotes/delete?id=_
 // @private
 const deleteQuote = async (req, res, next) => {
-    const { author, quote } = req.body;
+    const { id } = req.query;
 
     try {
-        if (!(author && quote)) {
+        if (!(id)) {
             throw new Error("Quote fields missing");
-        } else if (await quoteModel.findOneAndDelete({author, quote})) {
+        } else if (await quoteModel.findOneAndDelete({id})) {
             res.status(202).json({ message: "Deletion Successful!"});
         } else {
             throw new Error("Quote not in DB!");
