@@ -10,10 +10,6 @@ const quoteSchema = new mongoose.Schema(
         quote: {
             type: String,
             required: [true, "Please provide the quote"]
-        },
-        accessToken: {
-            type: String,
-            default: null
         }
     },
     { timestamps: true }

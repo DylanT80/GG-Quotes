@@ -1,11 +1,14 @@
 const express = require('express');
 const {
-    getRandomQuote
+    getRandomQuote,
+    addQuote,
+    deleteQuote
 } = require('../controllers/quotesController');
-
+const verifyToken = require("../middleware/validateToken")
 const router = express.Router();
 
-router.use(require('../middleware/validateToken'));
-router.route('/').get(getRandomQuote);
+router.get('/', getRandomQuote);
+router.post('/create', verifyToken, addQuote);
+router.delete('/delete', verifyToken, deleteQuote);
 
 module.exports = router;
