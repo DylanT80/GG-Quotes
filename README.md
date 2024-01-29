@@ -17,7 +17,6 @@ npm --prefix ./back-end run start
 ```
 
 Tech Stack:
-
 - Node.js
 - Express
 - MongoDB
