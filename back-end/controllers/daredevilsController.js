@@ -1,6 +1,31 @@
 const daredevilModel = require('../models/daredevilModel');
 const quoteModel = require('../models/quoteModel');
 
+// @dest Pagination of daredevils
+// @route GET /api/daredevils/
+// @public
+const daredevilPagination = async (req, res, next) => {
+    const { limit = 10, page = 1 } = req.query;
+
+    try {
+        const daredevils = await daredevilModel.find()
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .populate('quotes', '-_id -createdAt -updatedAt -__v -daredevil')
+        .select('-_id -createdAt -updatedAt -__v -daredevil');
+        
+        const total = await daredevilModel.countDocuments();
+        res.status(200).json({
+            daredevils,
+            totalPages: Math.ceil(total / limit),
+            currentPage: Number(page)
+        });
+    } catch (error) {
+        res.status(400);
+        next(error);
+    }
+}
+
 // @desc Get a daredevil by its id
 // @route GET /api/daredevils/daredevil?id=_
 // @public
@@ -79,6 +104,7 @@ const deleteDaredevil = async (req, res, next) => {
 }
 
 module.exports = {
+    daredevilPagination,
     getDaredevil,
     addDaredevil,
     deleteDaredevil
