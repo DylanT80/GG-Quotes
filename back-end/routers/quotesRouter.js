@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+    quotePagination,
     getRandomQuote,
     addQuote,
     deleteQuote
@@ -7,6 +8,7 @@ const {
 const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
+router.get('/', quotePagination);
 router.get('/random', getRandomQuote);
 router.post('/create', verifyToken, addQuote);
 router.delete('/delete?', verifyToken, deleteQuote);

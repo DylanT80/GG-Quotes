@@ -1,7 +1,29 @@
 const quoteModel = require('../models/quoteModel');
 const daredevilModel = require('../models/daredevilModel');
-// TODO: Add endpoint to return all quotes (pagination)
-// TODO: Add endpoint to get specific quote
+
+// @desc Pagination of quotes
+// @route GET/api/quotes/
+// @public
+const quotePagination = async (req, res, next) => {
+    const { limit = 10, page = 1 } = req.query;
+
+    try {
+        const quotes = await quoteModel.find()
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .populate('daredevil', '-_id -createdAt -updatedAt -__v -quotes')
+        .select('-_id -createdAt -updatedAt -__v');
+        const total = await quoteModel.countDocuments();
+        res.status(200).json({
+            quotes,
+            totalPages: Math.ceil(total / limit),
+            currentPage: page
+        });
+    } catch (error) {
+        res.status(400);
+        next(error);
+    }
+}
 
 // @desc Get a random GG quote
 // @route GET /api/quotes/random
@@ -79,6 +101,7 @@ const deleteQuote = async (req, res, next) => {
 }
 
 module.exports = {
+    quotePagination,
     getRandomQuote,
     addQuote,
     deleteQuote
