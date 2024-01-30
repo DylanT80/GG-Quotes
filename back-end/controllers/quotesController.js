@@ -17,7 +17,7 @@ const quotePagination = async (req, res, next) => {
         res.status(200).json({
             quotes,
             totalPages: Math.ceil(total / limit),
-            currentPage: page
+            currentPage: Number(page)
         });
     } catch (error) {
         res.status(400);
