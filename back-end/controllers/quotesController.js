@@ -1,5 +1,5 @@
 const quoteModel = require('../models/quoteModel');
-const daredevilModel = require('../models/quoteModel');
+const daredevilModel = require('../models/daredevilModel');
 // TODO: Update endpoints to reflext new Model changes
 // TODO: Add endpoint to return all quotes (pagination)
 
@@ -20,8 +20,7 @@ const addQuote = async (req, res, next) => {
         if (!(firstName && lastName && quote)) {
             throw new Error("Quote fields missing");
         }
-        
-        const daredevil = await daredevilModel.findOne({firstName, lastName})
+        const daredevil = await daredevilModel.findOne({firstName, lastName});
         if (!daredevil) {
             throw new Error("Daredevil not in DB!");
         }
