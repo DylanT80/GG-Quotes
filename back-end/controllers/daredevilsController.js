@@ -1,6 +1,6 @@
 const daredevilModel = require('../models/daredevilModel');
+const quoteModel = require('../models/quoteModel');
 
-// TODO: DELETE daredevil
 // TODO: GET daredevil by id
 
 // @desc Add a daredevil to the database
@@ -26,6 +26,37 @@ const addDaredevil = async (req, res, next) => {
     }
 }
 
+// @desc Delete a daredevil from the database
+// @route DELETE /api/daredevils/delete?id=_
+// @priavte
+const deleteDaredevil = async (req, res, next) => {
+    const { id } = req.query;
+    
+    try {
+        if (!id) {
+            throw new Error("Missing field");
+        }
+        const daredevil = await daredevilModel.findOne({id});
+        if (!daredevil) {
+            throw new Error("Daredevil not in DB!")
+        }
+
+        // Delete all quote docs associated with Daredevil
+        await quoteModel.deleteMany(
+            {
+                _id: { $in: daredevil.quotes}
+            }
+        );
+
+        await daredevil.deleteOne();
+        res.status(202).json({ message: "Deletion Successful!"});
+    } catch (error) {
+        res.status(400);
+        next(error);
+    }
+}
+
 module.exports = {
-    addDaredevil
+    addDaredevil,
+    deleteDaredevil
 };
