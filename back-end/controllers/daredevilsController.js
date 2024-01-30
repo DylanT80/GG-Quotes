@@ -2,7 +2,6 @@ const daredevilModel = require('../models/daredevilModel');
 const quoteModel = require('../models/quoteModel');
 
 // TODO: GET daredevil by id
-
 // @desc Add a daredevil to the database
 // @route POST /api/daredevils/create
 // @private
@@ -47,8 +46,8 @@ const deleteDaredevil = async (req, res, next) => {
                 _id: { $in: daredevil.quotes}
             }
         );
-
-        daredevilModel.updateMany({ id: { $gt: id } }, { $inc: { id: -1 }});
+        // Decrement ids
+        await daredevilModel.updateMany({ id: { $gt: id } }, { $inc: { id: -1 }});
 
         await daredevil.deleteOne();
         res.status(202).json({ message: "Deletion Successful!"});
