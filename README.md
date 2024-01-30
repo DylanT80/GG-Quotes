@@ -26,4 +26,5 @@ Tech Stack:
 |          |                                                                                                                                      |
 |----------|--------------------------------------------------------------------------------------------------------------------------------------|
 | 1/28/24  | Completed MVP of backend. Attempting to deploy application online through Azure. Having difficulty running it succesfully thought :( |
+| 1/29/24  | Addition of Daredevil Model. Added many endpoints and updates to others |
 
