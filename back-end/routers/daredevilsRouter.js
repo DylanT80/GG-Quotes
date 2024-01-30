@@ -6,7 +6,7 @@ const {
 const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
-// TODO: Route specific route with query params
+// TODO: Route specific route with query params (GET)
 router.post('/create', verifyToken, addDaredevil);
 router.delete('/delete?', verifyToken, deleteDaredevil);
 
