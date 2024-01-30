@@ -25,12 +25,28 @@ const quotePagination = async (req, res, next) => {
     }
 }
 
-// @desc Get a random GG quote
-// @route GET /api/quotes/random
+// @desc Get a daredevil by its id or random
+// @route GET /api/quotes/quote?id=_
 // @public
-const getRandomQuote = async (req, res, next) => {
-    const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }, { $unset: ['_id', 'createdAt', 'updatedAt', '__v'] }]);
-    res.status(200).json(docs[0]);
+const getQuote = async (req, res, next) => {
+    const { id } = req.query;
+
+    try {
+        // Random quote if no id specified
+        if (!id) {
+            const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }, { $unset: ['_id', 'createdAt', 'updatedAt', '__v'] }]);
+            res.status(200).json(docs[0]);
+        }
+        const quote = await quoteModel.findOne({id}, '-_id -createdAt -updatedAt -__v');
+        if (!quote) {
+            throw new Error("Quote not in DB!");
+        }
+
+        res.status(200).json(quote);
+    } catch (error) {
+        res.status("400");
+        next(error);
+    }
 }
 
 // @desc Add a new quote to database
@@ -102,7 +118,7 @@ const deleteQuote = async (req, res, next) => {
 
 module.exports = {
     quotePagination,
-    getRandomQuote,
+    getQuote,
     addQuote,
     deleteQuote
 };
