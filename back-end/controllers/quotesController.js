@@ -1,13 +1,13 @@
 const quoteModel = require('../models/quoteModel');
 const daredevilModel = require('../models/daredevilModel');
-// TODO: Update endpoints to reflext new Model changes
 // TODO: Add endpoint to return all quotes (pagination)
+// TODO: Add endpoint to get specific quote
 
 // @desc Get a random GG quote
 // @route GET /api/quotes
 // @public
 const getRandomQuote = async (req, res, next) => {
-    const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }]);
+    const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }, { $unset: ['_id', 'createdAt', 'updatedAt', '__v'] }]);
     res.status(200).json(docs[0]);
 }
 
