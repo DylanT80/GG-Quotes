@@ -61,8 +61,9 @@ const deleteQuote = async (req, res, next) => {
 
         // Remove quote from daredevil
         const daredevil = await daredevilModel.findOne(quote.daredevil);
-        const temp = daredevil.quotes;
-        const updatedQuotes = temp.map((q) => { if (quote._id != q._id) return q; });
+        const updatedQuotes = daredevil.quotes;
+        const i = updatedQuotes.indexOf(quote._id);
+        updatedQuotes.splice(i, 1);
         const update = { quotes: updatedQuotes };
         await daredevil.updateOne(update);
 
