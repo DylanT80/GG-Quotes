@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 app.use('/api/quotes', require('./routers/quotesRouter'));
 app.use('/api/users', require('./routers/usersRouter'));
+app.use('/api/daredevils', require('./routers/daredevilsRouter'));
 app.use(require('./middleware/errorHandler'))
 
 connectDB().then(() => {

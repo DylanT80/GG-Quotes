@@ -30,7 +30,12 @@ const addQuote = async (req, res, next) => {
         }
         // Updated id
         const total = await quoteModel.countDocuments() + 100;  // 100's for quote ids, can make constants file?
-        const quoteDoc = await quoteModel.create({id: total + 1, quote, daredevil});
+        const quoteDoc = await quoteModel.create({id: total + 1, quote, daredevil: daredevil._id });
+         // Update daredevil!
+        const updatedQuotes = daredevil.quotes;
+        updatedQuotes.push(quoteDoc._id);
+        const update = { quotes: updatedQuotes };
+        await daredevil.updateOne(update);
         res.status(201).json(quoteDoc);
     } catch (error) {
         res.status(400);
@@ -47,7 +52,18 @@ const deleteQuote = async (req, res, next) => {
     try {
         if (!(id)) {
             throw new Error("Quote fields missing");
-        } else if (await quoteModel.findOneAndDelete({id})) {
+        }
+
+        const quote = await quoteModel.findOne({id});
+        if (quote) {
+            // Remove quote from daredevil
+            const daredevil = await daredevilModel.findOne(quote.daredevil);
+            const updatedQuotes = daredevil.quotes;
+            updatedQuotes.splice(daredevil.quotes.indexOf(quote._id, 1));
+            const update = { quotes: updatedQuotes };
+            await daredevil.updateOne(update);
+
+            await quote.deleteOne();
             res.status(202).json({ message: "Deletion Successful!"});
         } else {
             throw new Error("Quote not in DB!");
