@@ -70,8 +70,8 @@ const deleteQuote = async (req, res, next) => {
         // Decrement quote id ordering
         await quoteModel.updateMany({ id: { $gt: id }}, { $inc: { id: -1 } });
         // Delete quote
-        await quote.deleteOne();
-        res.status(202).json({ message: "Deletion Successful!"});
+        const deletedQuote = await quote.deleteOne();
+        res.status(202).json(deletedQuote);
     } catch (error) {
         res.status(400);
         next(error);
