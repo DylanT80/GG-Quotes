@@ -1,10 +1,9 @@
 const daredevilModel = require('../models/daredevilModel');
 const quoteModel = require('../models/quoteModel');
 
-// TODO: GET daredevil by id
-
 // @desc Get a daredevil by its id
 // @route GET /api/daredevils?
+// @public
 const getDaredevil = async (req, res, next) => {
     const { id } = req.query;
 
@@ -12,7 +11,7 @@ const getDaredevil = async (req, res, next) => {
         if (!id) {
             throw new Error("Field missing");
         }
-        const daredevil = await daredevilModel.findOne({id}).select('-_id -createdAt -updatedAt -__v');
+        const daredevil = await daredevilModel.findOne({id}, '-_id -createdAt -updatedAt -__v');
         if (!daredevil) {
             throw new Error("Daredevil not in DB!");
         }
