@@ -30,7 +30,7 @@ const addQuote = async (req, res, next) => {
             throw new Error("Quote from author already in DB!");
         }
         // Updated id
-        const total = await quoteModel.countDocuments();
+        const total = await quoteModel.countDocuments() + 100;  // 100's for quote ids, can make constants file?
         const quoteDoc = await quoteModel.create({id: total + 1, quote, daredevil});
         res.status(201).json(quoteDoc);
     } catch (error) {

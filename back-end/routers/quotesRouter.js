@@ -4,7 +4,7 @@ const {
     addQuote,
     deleteQuote
 } = require('../controllers/quotesController');
-const verifyToken = require("../middleware/validateToken")
+const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
 router.get('/', getRandomQuote);
