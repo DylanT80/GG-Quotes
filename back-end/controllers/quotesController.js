@@ -21,7 +21,7 @@ const addQuote = async (req, res, next) => {
             throw new Error("Quote fields missing");
         }
         
-        const daredevil = daredevilModel.findOne({firstName, lastName})
+        const daredevil = await daredevilModel.findOne({firstName, lastName})
         if (!daredevil) {
             throw new Error("Daredevil not in DB!");
         }
