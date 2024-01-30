@@ -55,19 +55,22 @@ const deleteQuote = async (req, res, next) => {
         }
 
         const quote = await quoteModel.findOne({id});
-        if (quote) {
-            // Remove quote from daredevil
-            const daredevil = await daredevilModel.findOne(quote.daredevil);
-            const updatedQuotes = daredevil.quotes;
-            updatedQuotes.splice(daredevil.quotes.indexOf(quote._id, 1));
-            const update = { quotes: updatedQuotes };
-            await daredevil.updateOne(update);
-
-            await quote.deleteOne();
-            res.status(202).json({ message: "Deletion Successful!"});
-        } else {
+        if (!quote) {
             throw new Error("Quote not in DB!");
         }
+
+        // Remove quote from daredevil
+        const daredevil = await daredevilModel.findOne(quote.daredevil);
+        const temp = daredevil.quotes;
+        const updatedQuotes = temp.map((q) => { if (quote._id != q._id) return q; });
+        const update = { quotes: updatedQuotes };
+        await daredevil.updateOne(update);
+
+        // Decrement quote id ordering
+        await quoteModel.updateMany({ id: { $gt: id }}, { $inc: { id: -1 } });
+        // Delete quote
+        await quote.deleteOne();
+        res.status(202).json({ message: "Deletion Successful!"});
     } catch (error) {
         res.status(400);
         next(error);
