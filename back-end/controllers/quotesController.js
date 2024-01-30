@@ -4,7 +4,7 @@ const daredevilModel = require('../models/daredevilModel');
 // TODO: Add endpoint to get specific quote
 
 // @desc Get a random GG quote
-// @route GET /api/quotes
+// @route GET /api/quotes/random
 // @public
 const getRandomQuote = async (req, res, next) => {
     const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }, { $unset: ['_id', 'createdAt', 'updatedAt', '__v'] }]);
