@@ -7,7 +7,7 @@ const {
 const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
-router.get('/?', getDaredevil);
+router.get('/daredevil?', getDaredevil);
 router.post('/create', verifyToken, addDaredevil);
 router.delete('/delete?', verifyToken, deleteDaredevil);
 

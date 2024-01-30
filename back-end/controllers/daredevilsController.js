@@ -2,7 +2,7 @@ const daredevilModel = require('../models/daredevilModel');
 const quoteModel = require('../models/quoteModel');
 
 // @desc Get a daredevil by its id
-// @route GET /api/daredevils?
+// @route GET /api/daredevils/daredevil?id=_
 // @public
 const getDaredevil = async (req, res, next) => {
     const { id } = req.query;
