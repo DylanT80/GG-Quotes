@@ -1,12 +1,13 @@
 const express = require('express');
 const {
+    getDaredevil,
     addDaredevil,
     deleteDaredevil
 } = require('../controllers/daredevilsController');
 const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
-// TODO: Route specific route with query params (GET)
+router.get('/?', getDaredevil);
 router.post('/create', verifyToken, addDaredevil);
 router.delete('/delete?', verifyToken, deleteDaredevil);
 

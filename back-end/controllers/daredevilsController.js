@@ -2,6 +2,28 @@ const daredevilModel = require('../models/daredevilModel');
 const quoteModel = require('../models/quoteModel');
 
 // TODO: GET daredevil by id
+
+// @desc Get a daredevil by its id
+// @route GET /api/daredevils?
+const getDaredevil = async (req, res, next) => {
+    const { id } = req.query;
+
+    try {
+        if (!id) {
+            throw new Error("Field missing");
+        }
+        const daredevil = await daredevilModel.findOne({id}).select('-_id -createdAt -updatedAt -__v');
+        if (!daredevil) {
+            throw new Error("Daredevil not in DB!");
+        }
+
+        res.status(200).json(daredevil);
+    } catch (error) {
+        res.status("400");
+        next(error);
+    }
+}
+
 // @desc Add a daredevil to the database
 // @route POST /api/daredevils/create
 // @private
@@ -49,8 +71,8 @@ const deleteDaredevil = async (req, res, next) => {
         // Decrement ids
         await daredevilModel.updateMany({ id: { $gt: id } }, { $inc: { id: -1 }});
 
-        await daredevil.deleteOne();
-        res.status(202).json({ message: "Deletion Successful!"});
+        const deletedDaredevil = await daredevil.deleteOne();
+        res.status(202).json(deletedDaredevil);
     } catch (error) {
         res.status(400);
         next(error);
@@ -58,6 +80,7 @@ const deleteDaredevil = async (req, res, next) => {
 }
 
 module.exports = {
+    getDaredevil,
     addDaredevil,
     deleteDaredevil
 };
