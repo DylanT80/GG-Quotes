@@ -34,8 +34,11 @@ const getQuote = async (req, res, next) => {
     try {
         // Random quote if no id specified
         if (!id) {
-            const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }, { $unset: ['_id', 'createdAt', 'updatedAt', '__v'] }]);
-            res.status(200).json(docs[0]);
+            const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }]);
+            const quote = await quoteModel
+            .findOne(docs[0], '-_id -createdAt -updatedAt -__v')
+            .populate('daredevil', '-_id -createdAt -updatedAt -__v -quotes')
+            res.status(200).json(quote);
         }
         const quote = await quoteModel.findOne({id}, '-_id -createdAt -updatedAt -__v');
         if (!quote) {

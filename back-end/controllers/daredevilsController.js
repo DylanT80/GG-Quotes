@@ -33,8 +33,13 @@ const getDaredevil = async (req, res, next) => {
     const { id } = req.query;
 
     try {
+        // Random daredevil if no id specified
         if (!id) {
-            throw new Error("Field missing");
+            const docs = await daredevilModel.aggregate([{ $sample: { size: 1 } }]);
+            const daredevil = await daredevilModel
+            .find(docs[0], '-_id -createdAt -updatedAt -__v')
+            .populate('quotes', '-_id -createdAt -updatedAt -__v -daredevil');
+            res.status(200).json(daredevil);
         }
         const daredevil = await daredevilModel.findOne({id}, '-_id -createdAt -updatedAt -__v');
         if (!daredevil) {
