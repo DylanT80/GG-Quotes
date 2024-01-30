@@ -48,6 +48,8 @@ const deleteDaredevil = async (req, res, next) => {
             }
         );
 
+        daredevilModel.updateMany({ id: { $gt: id } }, { $inc: { id: -1 }});
+
         await daredevil.deleteOne();
         res.status(202).json({ message: "Deletion Successful!"});
     } catch (error) {
