@@ -2,7 +2,7 @@ const quoteModel = require('../models/quoteModel');
 const daredevilModel = require('../models/daredevilModel');
 
 // @desc Pagination of quotes
-// @route GET/api/quotes/
+// @route GET /api/quotes/
 // @public
 const quotePagination = async (req, res, next) => {
     const { limit = 10, page = 1 } = req.query;
