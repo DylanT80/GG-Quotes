@@ -1,5 +1,5 @@
 const quoteModel = require('../models/quoteModel');
-
+const daredevilModel = require('../models/quoteModel');
 // TODO: Update endpoints to reflext new Model changes
 // TODO: Add endpoint to return all quotes (pagination)
 
@@ -15,16 +15,23 @@ const getRandomQuote = async (req, res, next) => {
 // @route POST /api/quotes/create
 // @private
 const addQuote = async (req, res, next) => {
-    const { author, quote } = req.body;
+    const { firstName, lastName, quote } = req.body;
     try {
-        if (!(author && quote)) {
+        if (!(firstName && lastName && quote)) {
             throw new Error("Quote fields missing");
-        } else if (await quoteModel.findOne({author, quote})) {
+        }
+        
+        const daredevil = daredevilModel.findOne({firstName, lastName})
+        if (!daredevil) {
+            throw new Error("Daredevil not in DB!");
+        }
+
+        if (await quoteModel.findOne({daredevil, quote})) {
             throw new Error("Quote from author already in DB!");
         }
         // Updated id
         const total = await quoteModel.countDocuments();
-        const quoteDoc = await quoteModel.create({id: total + 1, author, quote});
+        const quoteDoc = await quoteModel.create({id: total + 1, quote, daredevil});
         res.status(201).json(quoteDoc);
     } catch (error) {
         res.status(400);
