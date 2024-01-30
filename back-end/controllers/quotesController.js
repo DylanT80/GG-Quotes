@@ -50,7 +50,7 @@ const deleteQuote = async (req, res, next) => {
     const { id } = req.query;
 
     try {
-        if (!(id)) {
+        if (!id) {
             throw new Error("Quote fields missing");
         }
 
