@@ -67,7 +67,7 @@ Calling any Group API without its following singular noun form endpoint will ret
 ### Quote _(endpoint)_ ###
 Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes are collected from external sources (Reddit threads, wikis, etc.).
 
-__id for specific quote OR null for random quote__
+__id for specific quote OR null for random quote__\
 ```GET http://<future-host-name>/api/quotes/quote/{id or null}```
 ```
 "id": 101,
@@ -101,7 +101,7 @@ __id for specific quote OR null for random quote__
 ### Daredvil _(endpoint)_ ###
 The fighter themselves.
 
-__id for specific daredevil OR null for random daredevil__
+__id for specific daredevil OR null for random daredevil__\
 ```GET http://<future-host-name>/api/daredevils/daredevil/{id or null}```
 ```
 "id": 1,
