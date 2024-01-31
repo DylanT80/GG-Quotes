@@ -67,7 +67,7 @@ _Note: group is equal to "quotes" in below example output_
 
 ## Quotes _(Group)_ ##
 ### Quote _(endpoint)_ ###
-Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes are collected from external sources (Reddit threads, wikis, etc.).
+Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes in database are collected from external sources (Reddit threads, wikis, etc.).
 
 _Note: id for specific quote OR null for random quote_
 
