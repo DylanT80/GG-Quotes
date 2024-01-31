@@ -45,7 +45,7 @@ const getDaredevil = async (req, res, next) => {
         if (!daredevil) {
             throw new Error("Daredevil not in DB!");
         }
-
+        await daredevil.populate('quotes', '-_id -createdAt -updatedAt -__v -daredevil');
         res.status(200).json(daredevil);
     } catch (error) {
         res.status(400);

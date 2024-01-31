@@ -44,7 +44,7 @@ const getQuote = async (req, res, next) => {
         if (!quote) {
             throw new Error("Quote not in DB!");
         }
-
+        await quote.populate('daredevil', '-_id -createdAt -updatedAt -__v -quotes');
         res.status(200).json(quote);
     } catch (error) {
         res.status(400);
