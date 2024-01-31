@@ -1,5 +1,5 @@
 # GG-Quotes #
-A shitpost webpage that utilizes a developed API for Guilty Gear quotes!
+A webpage that utilizes a developed API for Guilty Gear quotes!
 
 ## Tech Stack ##
 ### Front-End ###
