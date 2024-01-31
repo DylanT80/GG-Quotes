@@ -25,8 +25,8 @@ Tech Stack:
 ## Pagination _(Group)_ ##
 Calling any Group API without its following singular noun form endpoint will return a paginated list of available resources for that API Group. By default, a list "page" will contain up to 10 resources. If you would like to change this just add a 'limit' query parameter to the GET request, e.g. ?limit=20. You can use 'page' to move to the next page, e.g. ?limit=20&page=3.
 ### Named (endpoint) ###
-__group is equal to "quotes" in below example output__\
-```GET http://<future-host-name>/api/{group}```
+```GET http://<future-host-name>/api/{group}```\
+__group is equal to "quotes" in below example output__
 ```
 "results": [
     {
@@ -69,6 +69,7 @@ __group is equal to "quotes" in below example output__\
 Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes are collected from external sources (Reddit threads, wikis, etc.).
 
 __id for specific quote OR null for random quote__\
+\
 ```GET http://<future-host-name>/api/quotes/quote/{id or null}```
 ```
 "id": 101,
@@ -103,6 +104,7 @@ __id for specific quote OR null for random quote__\
 The fighter themselves.
 
 __id for specific daredevil OR null for random daredevil__\
+\
 ```GET http://<future-host-name>/api/daredevils/daredevil/{id or null}```
 ```
 "id": 1,
