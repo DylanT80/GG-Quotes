@@ -61,6 +61,8 @@ Calling any Group API without its following singular noun form endpoint will ret
 | totalPages | Total number of pages based on limit | Number |
 | currentPage    | The daredevil who said this quote    | Number |
 
+&nbsp;
+
 ## Quotes _(Group)_ ##
 #### Quote _(endpoint)_ ####
 Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes are collected from external sources (Reddit threads, wikis, etc.).
@@ -92,6 +94,8 @@ __id for specific quote OR null for random quote__
 | firstName | First name of daredevil     | String |
 | lastName    | Last name of daredevil    | String |
 | officialArtwork | URL for artwork of daredevil | String |
+
+&nbsp;
 
 ## Daredevils _(Group)_ ##
 #### Daredvil _(endpoint)_ ####
