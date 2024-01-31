@@ -23,7 +23,7 @@ Tech Stack:
 
 # API Docs #
 ## Pagination _(Group)_ ##
-Calling any Group API without its following singular noun form endpoint will return a paginated list of available resources for that API Group. By default, a list "page" will contain up to 10 resources. If you would like to change this just add a 'limit' query parameter to the GET request, e.g. ?limit=20. You can use 'page' to move to the next page, e.g. ?limit=20&page=3.
+Calling any Group resource endpoint without its following singular noun form endpoint will return a paginated list of available resources for that Group resource. By default, a list "page" will contain up to 10 resources. If you would like to change this just add a 'limit' query parameter to the GET request, e.g. ?limit=20. You can use 'page' to move to the next page, e.g. ?limit=20&page=3.
 ### Named (endpoint) ###
 ```GET http://<future-host-name>/api/{group}```
 
@@ -61,7 +61,7 @@ _Note: group is equal to "quotes" in below example output_
 | --------| ------------| -----|
 | results  | List of the identified resource    | list NamedAPIResource |
 | totalPages | Total number of pages based on limit | Number |
-| currentPage    | The daredevil who said this quote    | Number |
+| currentPage    | The current page out of the total pages | Number |
 
 &nbsp;
 
