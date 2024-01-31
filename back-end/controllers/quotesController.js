@@ -15,7 +15,7 @@ const quotePagination = async (req, res, next) => {
         .select('-_id -createdAt -updatedAt -__v');
         const total = await quoteModel.countDocuments();
         res.status(200).json({
-            quotes,
+            results: quotes,
             totalPages: Math.ceil(total / limit),
             currentPage: Number(page)
         });

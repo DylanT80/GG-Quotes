@@ -16,7 +16,7 @@ const daredevilPagination = async (req, res, next) => {
         
         const total = await daredevilModel.countDocuments();
         res.status(200).json({
-            daredevils,
+            results: daredevils,
             totalPages: Math.ceil(total / limit),
             currentPage: Number(page)
         });
