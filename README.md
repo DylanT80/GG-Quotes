@@ -24,7 +24,7 @@ Tech Stack:
 # API Docs #
 ## Pagination _(Group)_ ##
 Calling any Group API without its following singular noun form endpoint will return a paginated list of available resources for that API Group. By default, a list "page" will contain up to 10 resources. If you would like to change this just add a 'limit' query parameter to the GET request, e.g. ?limit=20. You can use 'page' to move to the next page, e.g. ?limit=20&page=3.
-#### Named (endpoint) ####
+### Named (endpoint) ###
 ```GET http://<future-host-name>/api/quotes```
 ```
 "results": [
@@ -54,7 +54,7 @@ Calling any Group API without its following singular noun form endpoint will ret
 "currentPage": 1
 ```
 
-#### NamedAPIResourceList _(type)_ ####
+### NamedAPIResourceList _(type)_ ###
 | Name    | Description | Type |
 | --------| ------------| -----|
 | results  | List of the identified resource    | list NamedAPIResource |
@@ -64,7 +64,7 @@ Calling any Group API without its following singular noun form endpoint will ret
 &nbsp;
 
 ## Quotes _(Group)_ ##
-#### Quote _(endpoint)_ ####
+### Quote _(endpoint)_ ###
 Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes are collected from external sources (Reddit threads, wikis, etc.).
 
 __id for specific quote OR null for random quote__
@@ -80,14 +80,14 @@ __id for specific quote OR null for random quote__
 }
 ```
 
-#### Quote _(type)_ ####
+### Quote _(type)_ ###
 | Name    | Description | Type |
 | --------| ------------| -----|
 | id  | The identifier for this resource    | Number |
 | quote | The quote itself     | String |
 | daredevil    | The daredevil who said this quote    | Daredevil |
 
-#### Daredevil _(type)_ ####
+### Daredevil _(type)_ ###
 | Name    | Description | Type |
 | --------| ------------| -----|
 | id  | The identifier for this resource    | Number |
@@ -98,7 +98,7 @@ __id for specific quote OR null for random quote__
 &nbsp;
 
 ## Daredevils _(Group)_ ##
-#### Daredvil _(endpoint)_ ####
+### Daredvil _(endpoint)_ ###
 The fighter themselves.
 
 __id for specific daredevil OR null for random daredevil__
@@ -120,7 +120,7 @@ __id for specific daredevil OR null for random daredevil__
 ]
 ```
 
-#### Daredevil _(type)_ ####
+### Daredevil _(type)_ ###
 | Name    | Description | Type |
 | --------| ------------| -----|
 | id  | The identifier for this resource    | Number |
@@ -129,7 +129,7 @@ __id for specific daredevil OR null for random daredevil__
 | officialArtwork | URL for artwork of daredevil | String |
 | quotes | List of quotes daredevil has said | Quote
 
-#### Quote _(type)_ ####
+### Quote _(type)_ ###
 | Name    | Description | Type |
 | --------| ------------| -----|
 | id  | The identifier for this resource    | Number |
