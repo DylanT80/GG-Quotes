@@ -39,7 +39,7 @@ const getDaredevil = async (req, res, next) => {
             const daredevil = await daredevilModel
             .find(docs[0], '-_id -createdAt -updatedAt -__v')
             .populate('quotes', '-_id -createdAt -updatedAt -__v -daredevil');
-            res.status(200).json(daredevil);
+            res.status(200).json(daredevil[0]); // [0] json returns array?
         }
         const daredevil = await daredevilModel.findOne({id}, '-_id -createdAt -updatedAt -__v');
         if (!daredevil) {
@@ -48,7 +48,7 @@ const getDaredevil = async (req, res, next) => {
 
         res.status(200).json(daredevil);
     } catch (error) {
-        res.status("400");
+        res.status(400);
         next(error);
     }
 }

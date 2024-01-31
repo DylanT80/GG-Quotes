@@ -47,7 +47,7 @@ const getQuote = async (req, res, next) => {
 
         res.status(200).json(quote);
     } catch (error) {
-        res.status("400");
+        res.status(400);
         next(error);
     }
 }
