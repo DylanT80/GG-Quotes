@@ -9,8 +9,8 @@ const verifyToken = require("../middleware/validateToken");
 const router = express.Router();
 
 router.get('/', daredevilPagination);
-router.get('/daredevil?', getDaredevil);
-router.post('/create', verifyToken, addDaredevil);
-router.delete('/delete?', verifyToken, deleteDaredevil);
+router.post('/', verifyToken, addDaredevil);
+router.get('/:id', getDaredevil);
+router.delete('/:id', verifyToken, deleteDaredevil);
 
 module.exports = router;

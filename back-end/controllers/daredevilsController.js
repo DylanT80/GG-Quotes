@@ -27,10 +27,10 @@ const daredevilPagination = async (req, res, next) => {
 }
 
 // @desc Get a daredevil by its id
-// @route GET /api/daredevils/daredevil?id=_
+// @route GET /api/daredevils/:id
 // @public
 const getDaredevil = async (req, res, next) => {
-    const { id } = req.query;
+    const { id } = req.params;
 
     try {
         // Random daredevil if no id specified
@@ -54,7 +54,7 @@ const getDaredevil = async (req, res, next) => {
 }
 
 // @desc Add a daredevil to the database
-// @route POST /api/daredevils/create
+// @route POST /api/daredevils/
 // @private
 const addDaredevil = async (req, res, next) => {
     const { firstName, lastName, officialArtwork } = req.body;
@@ -77,15 +77,12 @@ const addDaredevil = async (req, res, next) => {
 }
 
 // @desc Delete a daredevil from the database
-// @route DELETE /api/daredevils/delete?id=_
+// @route DELETE /api/daredevils/:id
 // @priavte
 const deleteDaredevil = async (req, res, next) => {
-    const { id } = req.query;
+    const { id } = req.params;
     
     try {
-        if (!id) {
-            throw new Error("Missing field");
-        }
         const daredevil = await daredevilModel.findOne({id});
         if (!daredevil) {
             throw new Error("Daredevil not in DB!")
