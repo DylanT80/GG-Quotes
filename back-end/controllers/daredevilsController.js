@@ -57,10 +57,10 @@ const getDaredevil = async (req, res, next) => {
 // @route POST /api/daredevils/
 // @private
 const addDaredevil = async (req, res, next) => {
-    const { firstName, lastName, officialArtwork } = req.body;
+    const { firstName, lastName = "", officialArtwork } = req.body;
 
     try {
-        if (!(firstName && lastName && officialArtwork)) {
+        if (!(firstName && officialArtwork)) {
             throw new Error("Fields missing");
         } else if (await daredevilModel.findOne({firstName, lastName})) {
             throw new Error("Daredevil already exists in DB!");

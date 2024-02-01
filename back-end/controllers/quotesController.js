@@ -55,9 +55,9 @@ const getQuote = async (req, res, next) => {
 // @route POST /api/quotes/
 // @private
 const addQuote = async (req, res, next) => {
-    const { firstName, lastName, quote } = req.body;
+    const { firstName, lastName = "", quote } = req.body;
     try {
-        if (!(firstName && lastName && quote)) {
+        if (!(firstName && quote)) {
             throw new Error("Quote fields missing");
         }
         const daredevil = await daredevilModel.findOne({firstName, lastName});
