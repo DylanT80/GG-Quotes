@@ -83,6 +83,9 @@ const deleteDaredevil = async (req, res, next) => {
     const { id } = req.params;
     
     try {
+        if (!id) {
+            throw new Error("Missing field");
+        }
         const daredevil = await daredevilModel.findOne({id});
         if (!daredevil) {
             throw new Error("Daredevil not in DB!")

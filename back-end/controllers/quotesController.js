@@ -25,15 +25,14 @@ const quotePagination = async (req, res, next) => {
     }
 }
 
-// @desc Get a daredevil by its id or random
-// @route GET /api/quotes/quote?id=_
+// @desc Get a quote by its id (could be random)
+// @route GET /api/quotes/:id
 // @public
 const getQuote = async (req, res, next) => {
-    const { id } = req.query;
-
+    const { id } = req.params;
     try {
-        // Random quote if no id specified
-        if (!id) {
+        // Random quote if id is "random"
+        if (id == 'random') {
             const docs = await quoteModel.aggregate([{ $sample: { size: 1 } }]);
             const quote = await quoteModel
             .findOne(docs[0], '-_id -createdAt -updatedAt -__v')
@@ -53,7 +52,7 @@ const getQuote = async (req, res, next) => {
 }
 
 // @desc Add a new quote to database
-// @route POST /api/quotes/create
+// @route POST /api/quotes/
 // @private
 const addQuote = async (req, res, next) => {
     const { firstName, lastName, quote } = req.body;
@@ -85,10 +84,10 @@ const addQuote = async (req, res, next) => {
 }
 
 // @desc Delete a quote in database
-// @route DELETE /api/quotes/delete?id=_
+// @route DELETE /api/quotes/:id
 // @private
 const deleteQuote = async (req, res, next) => {
-    const { id } = req.query;
+    const { id } = req.params;
 
     try {
         if (!id) {
