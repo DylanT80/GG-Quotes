@@ -71,7 +71,7 @@ Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspiration
 
 _Note: id for specific quote OR "random" for random quote_
 
-```GET http://<future-host-name>/api/quotes/quote/{id or random}```
+```GET http://<future-host-name>/api/quotes/{id or random}```
 ```
 "id": 101,
 "quote": "Projectiles are bullshit.",
