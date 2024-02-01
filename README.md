@@ -66,12 +66,12 @@ _Note: group is equal to "quotes" in below example output_
 &nbsp;
 
 ## Quotes _(Group)_ ##
-### Quote _(endpoint)_ ###
+### Quotes _(endpoint)_ ###
 Quotes said by the cast of Guilty Gear. The quotes range from wtf to inspirational. All quotes in the database are collected from external sources (Reddit threads, wikis, etc.).
 
-_Note: id for specific quote OR null for random quote_
+_Note: id for specific quote OR "random" for random quote_
 
-```GET http://<future-host-name>/api/quotes/quote/{id or null}```
+```GET http://<future-host-name>/api/quotes/quote/{id or random}```
 ```
 "id": 101,
 "quote": "Projectiles are bullshit.",
@@ -101,12 +101,10 @@ _Note: id for specific quote OR null for random quote_
 &nbsp;
 
 ## Daredevils _(Group)_ ##
-### Daredvil _(endpoint)_ ###
+### Daredvils _(endpoint)_ ###
 The fighter themselves.
 
-_Note: id for specific daredevil OR null for random daredevil_
-
-```GET http://<future-host-name>/api/daredevils/daredevil/{id or null}```
+```GET http://<future-host-name>/api/daredevils/{id}```
 ```
 "id": 1,
 "firstName": "Sol",
@@ -148,4 +146,5 @@ _Note: id for specific daredevil OR null for random daredevil_
 | 1/28/24  | Completed MVP of backend. Attempting to deploy application online through Azure. Having difficulty running it succesfully thought :( | 
 | 1/29/24  | Addition of Daredevil Model. Changed Quotes Model to reflect Daredevil (refs) and logic that comes with it. IE deleting one deletes others or id decrement logic. |
 | 1/30/24 | Merged endpoints of GET random & specific with query together. Implemented pagination for both Groups/Models. Also wrote documentation for API's public funcitonality/endpoints (ripped tf off from PokéAPI, thank you).
+| 1/31/24 | Learned about RESTful APIs. Updated endpoints to match the transparent URL/URI constraints :) |
 
