@@ -10,8 +10,8 @@ TBD
 
 To start running server (dev then prod respectively):
 ```
-npm --prefix ./back-end run server
-npm --prefix ./back-end run start
+npm --prefix ./backend run server
+npm --prefix ./backend run start
 ```
 
 Tech Stack:
