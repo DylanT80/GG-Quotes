@@ -147,4 +147,5 @@ The fighter themselves.
 | 1/29/24  | Addition of Daredevil Model. Changed Quotes Model to reflect Daredevil (refs) and logic that comes with it. IE deleting one deletes others or id decrement logic. |
 | 1/30/24 | Merged endpoints of GET random & specific with query together. Implemented pagination for both Groups/Models. Also wrote documentation for API's public funcitonality/endpoints (ripped tf off from PokéAPI, thank you).
 | 1/31/24 | Learned about RESTful APIs. Updated endpoints to match the transparent URL/URI constraints :) |
+| 2/8/24 | Spent time re-learning React. Started working on Figma and implementing the design and layout. Hit a stopping point on useFetch which will use my API. Getting closer! |
 
