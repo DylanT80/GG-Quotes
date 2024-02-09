@@ -8,7 +8,11 @@ import './App.css';
 
 const App = () => {
   const { data, loading, error } = useFetch('http://localhost:3000/api/quotes/random');
-  alert(data);
+
+  const handleClick = () => {
+    alert('next quote!');
+  }
+
   return (
       <div className='mainContainer'>
 
