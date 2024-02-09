@@ -141,5 +141,5 @@ The fighter themselves.
 | 1/30/24 | Merged endpoints of GET random & specific with query together. Implemented pagination for both Groups/Models. Also wrote documentation for API's public funcitonality/endpoints (ripped tf off from PokéAPI, thank you).
 | 1/31/24 | Learned about RESTful APIs. Updated endpoints to match the transparent URL/URI constraints :) |
 | 2/8/24 | Spent time re-learning React. Started working on Figma and implementing the design and layout. Hit a stopping point on useFetch which will use my API. Getting closer! |
-| 2/9/24 | Finally connected the frontend with the backend using a custom Fetch hook! At this point, what's left is to add animations and maybe sound ;D |
+| 2/9/24 | Finally connected the frontend with the backend using a custom Fetch hook! At this point, what's left is to add fetch error handling, animations and maybe sound ;D |
 
