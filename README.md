@@ -4,12 +4,10 @@ A webpage that utilizes a developed API for Guilty Gear quotes!
 ## Tech Stack ##
 ### Front-End ###
 
-Tech Stack:
 - React
 
 ### Back-End ###
 
-Tech Stack:
 - Node.js
 - Express
 - MongoDB
