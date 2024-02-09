@@ -1,0 +1,15 @@
+.buttonContainer {
+    grid-area: 3 / 1 / 4 / 2;
+}
+
+.buttonImg {
+    height: 90%;
+    width: 90%;
+}
+
+.hitbox {
+    background-color: transparent;
+    border-radius: 100%;
+    border: 0;
+    padding: 0;
+}

@@ -1,10 +1,14 @@
-import './App.css'
 import {
   Image,
-  Quote
-} from './components'
+  Quote,
+  Button
+} from './components';
+import useFetch from './hooks/useFetch';
+import './App.css';
 
-function App() {
+const App = () => {
+  const { data, loading, error } = useFetch('http://localhost:3000/api/quotes/random');
+  alert(data);
   return (
       <div className='mainContainer'>
 
@@ -14,6 +18,7 @@ function App() {
 
         <div className="contentContainer">
           <Quote quote={'Projectiles are bullshit.'} daredevil={'Sol Badguy'} />
+          <Button handleClick={handleClick} />
         </div>
         
       </div>

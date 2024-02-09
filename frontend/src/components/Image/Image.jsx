@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const Image = ({ imageSrc }) => {
     return (
-        <img src={imageSrc} />
+        <img className='daredevilImg' src={imageSrc} />
     );
 }
 
