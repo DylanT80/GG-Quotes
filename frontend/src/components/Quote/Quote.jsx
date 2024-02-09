@@ -1,18 +1,24 @@
 import './Quote.css';
 import propTypes from 'prop-types';
 
-const Quote = ({ quote, daredevil }) => {
+const Quote = ({ data, loading }) => {
     return (
         <div className="quotesContainer">
-            <p className="quote">{quote}</p>
-            <p className="daredevil"><i>{daredevil}</i></p>
+            {loading ? (
+                <p>here comes daredevil...</p>
+            ) : (
+                <>
+                    <p className="quote">{data?.quote}</p>
+                    <p className="daredevil"><i>{data?.daredevil.firstName + ' ' + data?.daredevil.lastName}</i></p>
+                </>
+            )}
         </div>
     );
 }
 
 Quote.propTypes = {
-    quote: propTypes.string,
-    daredevil: propTypes.string
+    data: propTypes.object,
+    loading: propTypes.bool
 };
 
 

@@ -16,4 +16,5 @@
     grid-template-columns: minmax(350px, 1fr);
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
 }
