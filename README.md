@@ -4,15 +4,10 @@ A webpage that utilizes a developed API for Guilty Gear quotes!
 ## Tech Stack ##
 ### Front-End ###
 
-TBD
+Tech Stack:
+- React
 
 ### Back-End ###
-
-To start running server (dev then prod respectively):
-```
-npm --prefix ./backend run server
-npm --prefix ./backend run start
-```
 
 Tech Stack:
 - Node.js
