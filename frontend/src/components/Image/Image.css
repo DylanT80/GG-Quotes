@@ -1,0 +1,8 @@
+img {
+    max-width: max-content;
+    max-height: max-content;
+    scale: 1.2;
+    position: absolute;
+    top: 130px;
+    left: -15px;
+}
