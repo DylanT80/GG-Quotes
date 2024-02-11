@@ -142,4 +142,5 @@ The fighter themselves.
 | 1/31/24 | Learned about RESTful APIs. Updated endpoints to match the transparent URL/URI constraints :) |
 | 2/8/24 | Spent time re-learning React. Started working on Figma and implementing the design and layout. Hit a stopping point on useFetch which will use my API. Getting closer! |
 | 2/9/24 | Finally connected the frontend with the backend using a custom Fetch hook! Had to deal with CORS. At this point, what's left is to add fetch error handling, animations and maybe sound ;D |
+| 2/10/24 | Learned transitions and animations and applied it! Added a bit more css. Pretty much done besides any nice to have features! |
 
