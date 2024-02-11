@@ -20,7 +20,7 @@ const App = () => {
       <div className='mainContainer'>
 
         <div className="imageContainer">
-          <Image imageSrc={data?.daredevil.officialArtwork} />
+          <Image key={url} imageSrc={data?.daredevil.officialArtwork} />
         </div>
 
         <div className="contentContainer">

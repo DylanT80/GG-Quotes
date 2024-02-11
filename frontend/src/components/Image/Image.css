@@ -1,8 +1,68 @@
-.daredevilImg {
+/* Utility classes */
+.animate {
+    animation-duration: 0.65s;
+    animation-fill-mode: both;
+}
+
+.shadow {
+    animation-delay: var(--delay);
+}
+
+.red {
+    filter: invert(8%) sepia(76%) saturate(6090%) hue-rotate(342deg) brightness(125%) contrast(104%);
+}
+
+.green {
+    filter: invert(47%) sepia(68%) saturate(5897%) hue-rotate(71deg) brightness(95%) contrast(96%);
+}
+
+.blue {
+    filter: invert(8%) sepia(94%) saturate(7393%) hue-rotate(247deg) brightness(96%) contrast(146%);
+}
+
+/* Animations */
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(-500px);
+    }
+
+    to {
+        transform: translate(0px);
+    }
+}
+
+@keyframes slideFromLeftLag {
+    from {
+        transform: translateX(-500px);
+        opacity: 100%;
+    }
+
+    60% {
+        opacity: 100%;
+    }
+
+    to {
+        transform: translate(0px);
+        opacity: 0%;
+        display: none;
+    }
+}
+
+
+.daredevilImg, .daredevilImgLag {
     max-width: max-content;
     max-height: max-content;
     scale: 1.2;
     position: absolute;
     top: 130px;
     left: -15px;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.daredevilImg {
+    animation-name: slideFromLeft;
+}
+
+.daredevilImgLag {
+    animation-name: slideFromLeftLag;
 }
