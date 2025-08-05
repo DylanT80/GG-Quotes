@@ -20,3 +20,10 @@
 
     min-width: 425px;
 }
+
+.buttonContainer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 25px;
+}

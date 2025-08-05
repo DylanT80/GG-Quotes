@@ -4,23 +4,22 @@ import {
   Button
 } from './components';
 import useFetch from './hooks/useFetch';
-import { useState } from 'react';
 import './App.css';
 
 const App = () => {
-  const [url, setUrl] = useState('http://localhost:3000/api/quotes/random');
-  const { data, loading, error } = useFetch(url);
+  const url = `${import.meta.env.VITE_API_URL}/api/quotes/random`;
+  const { data, loading, error, refetch } = useFetch(url);
 
   // useFetch is called again based on url change so alternatively add/remove '/' to url to change it LOL
   const handleClick = () => {
-    url.charAt(url.length - 1) === '/' ? setUrl(url.substring(0, url.length - 1)) : setUrl(url.concat('/'));
+    refetch();
   }
 
   return (
       <div className='mainContainer'>
 
         <div className="imageContainer">
-          <Image key={url} imageSrc={data?.daredevil.officialArtwork} />
+          <Image key={data} imageSrc={data?.daredevil.officialArtwork} />
         </div>
 
         <div className="contentContainer">
@@ -28,6 +27,9 @@ const App = () => {
             data={data}
             loading={loading}
           />
+        </div>
+
+        <div className="buttonContainer">
           <Button handleClick={handleClick} />
         </div>
         

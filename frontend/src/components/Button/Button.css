@@ -1,5 +1,11 @@
 .buttonContainer {
-    grid-area: 3 / 1 / 4 / 2;
+    margin: auto;
+    border: 0.3em solid gray;
+    border-left: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #f7f7f7f7;
+    z-index: 1;
 }
 
 .buttonImg {
@@ -11,9 +17,12 @@
     background-color: transparent;
     border-radius: 100%;
     border: 0;
-    padding: 0;
 
     transition: all 0.3s;
+
+    font-size: 100px;
+    font-family: cursive;
+    font-weight: bold;
 }
 
 .hitbox:hover {

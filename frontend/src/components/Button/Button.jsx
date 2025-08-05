@@ -5,7 +5,8 @@ const Button = ({ handleClick }) => {
     return (
         <div className="buttonContainer">
             <button className='hitbox' onClick={handleClick}>
-                <img className='buttonImg' src='https://media.discordapp.net/attachments/653648487707050034/1000481246444540004/gordon_high_res_logo2.png' />
+                {/* <img className='buttonImg' src='https://media.discordapp.net/attachments/653648487707050034/1000481246444540004/gordon_high_res_logo2.png' /> */}
+                next
             </button>
         </div>
     );
